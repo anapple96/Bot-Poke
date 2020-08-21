@@ -36,7 +36,7 @@ public class Program
 	{
 		if (message.Content == $"/number {Lott}")
 		{
-			await message.Channel.SendMessageAsync($"Ding!");
+			await message.Channel.SendMessageAsync($"Ding! {Lott} is the right number!");
 		}
 
 		if (message.Content == "/s Lottery")
