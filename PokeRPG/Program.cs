@@ -24,7 +24,7 @@ public class Program
 		_client.Log += Log;
 
 		await _client.LoginAsync(TokenType.Bot,
-			Environment.GetEnvironmentVariable("NzQ2MzQ2NjE4NjM4NDM0Mzk1.Xz-_dA.XdB659qv7Ywi-Tz5QWP7X9g3-po"));
+			"token");
 		await _client.StartAsync();
 
 		_client.MessageReceived += MessageReceived;
@@ -42,6 +42,7 @@ public class Program
 		if (message.Content == "/s Lottery")
 		{
 			await message.Channel.SendMessageAsync("/number [number] to guess the number!");
+			Console.WriteLine($"{Lott}");
 		}
 	}
 }
