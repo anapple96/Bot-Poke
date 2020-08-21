@@ -4,6 +4,8 @@ using Discord;
 using Discord.WebSocket;
 public class Program
 {
+	static Random rnd = new Random();
+	int Lott = rnd.Next(1000000, 69420666);
 	public static void Main(string[] args)
 		=> new Program().MainAsync().GetAwaiter().GetResult();
 
@@ -32,9 +34,14 @@ public class Program
 
 	private async Task MessageReceived(SocketMessage message)
 	{
-		if (message.Content == "!ping")
+		if (message.Content == $"/number {Lott}")
 		{
-			await message.Channel.SendMessageAsync("Pong!");
+			await message.Channel.SendMessageAsync($"Ding!");
+		}
+
+		if (message.Content == "/s Lottery")
+		{
+			await message.Channel.SendMessageAsync("/number [number] to guess the number!");
 		}
 	}
 }
