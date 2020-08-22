@@ -24,7 +24,7 @@ public class Program
 		_client.Log += Log;
 
 		await _client.LoginAsync(TokenType.Bot,
-			"token");
+			"t");
 		await _client.StartAsync();
 
 		_client.MessageReceived += MessageReceived;
