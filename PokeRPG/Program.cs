@@ -2,10 +2,20 @@
 using System.Threading.Tasks;
 using Discord;
 using Discord.WebSocket;
+using PokeRPG;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System.IO;
+using System.Reflection;
+using Discord.Commands;
+
 public class Program
 {
 	static Random rnd = new Random();
 	int Lott = rnd.Next(1000000, 69420666);
+	int Key = rnd.Next(10000, 69420);
+	int i = 0;
 	public static void Main(string[] args)
 		=> new Program().MainAsync().GetAwaiter().GetResult();
 
@@ -23,26 +33,9 @@ public class Program
 
 		_client.Log += Log;
 
-		await _client.LoginAsync(TokenType.Bot,
-			"t");
+		await _client.LoginAsync(TokenType.Bot,"");
 		await _client.StartAsync();
 
-		_client.MessageReceived += MessageReceived;
-
 		await Task.Delay(-1);
-	}
-
-	private async Task MessageReceived(SocketMessage message)
-	{
-		if (message.Content == $"/number {Lott}")
-		{
-			await message.Channel.SendMessageAsync($"Ding! {Lott} is the right number!");
-		}
-
-		if (message.Content == "/s Lottery")
-		{
-			await message.Channel.SendMessageAsync("/number [number] to guess the number!");
-			Console.WriteLine($"{Lott}");
-		}
 	}
 }
